@@ -14,7 +14,7 @@ const Home: NextPage = () => {
 
       <main className="flex w-screen content">
         <ul>
-          <li><Link href={'/map'}>TM Game State</Link></li>
+          <li><a href={'/map'}>TM Game State</a></li>
         </ul>
       </main>
 
