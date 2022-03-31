@@ -1,0 +1,10 @@
+{
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

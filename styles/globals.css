@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.content {
+  flex: 1 0 auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+@layer components {
+  #__next {
+    @apply h-full;
+  }
+  html,
+  body {
+    @apply h-full;
+  }
+}
