@@ -11,7 +11,7 @@ import { textParse } from '../../lib/textParser'
 import { useRouter } from 'next/router'
 import { generate as shortUUID } from "short-uuid";
 
-const textTemplate = `Map: "{mapName}" by {mapAuthor} AT: {authorTime}`
+const textTemplate = `Map: "{mapName}" by {mapAuthor} AT: {mapAuthorTime}`
 
 export const getServerSideProps = async (context: NextPageContext) => {
   const data = parseCookies(context.req)
@@ -224,6 +224,7 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
         </p>
         <details><summary>View Token</summary> <code>{props.viewToken}</code></details>
         <br />
+        <p>Endpoint: {props.host}/api/map/update</p>
         <details open>
           <summary>Latest Map Info</summary>
           {mapInfo ? (
