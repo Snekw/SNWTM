@@ -208,7 +208,7 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
           The token will also expire if there is longer than <b>90 days</b> since last data received from Trackmania.
         </p>
         <p>
-          Use with SNWTMMap OpenPlanet plugin.
+          Use with <a className='text-blue-800' href='https://openplanet.dev/plugin/snwtmmap'>SNW Map Util OpenPlanet plugin</a>.
         </p>
         <hr />
         <br />
@@ -268,6 +268,13 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
                 <li>TrackID</li><li>UserID</li><li>Username</li><li>GbxMapName</li><li>AuthorLogin</li><li>MapType</li><li>TitlePack</li><li>TrackUID</li><li>Mood</li><li>DisplayCost</li><li>ModName</li><li>Lightmap</li><li>ExeVersion</li><li>ExeBuild</li><li>AuthorTime</li><li>ParserVersion</li><li>UploadedAt</li><li>UpdatedAt</li><li>Name</li><li>Tags</li><li>TypeName</li><li>StyleName</li><li>EnvironmentName</li><li>VehicleName</li><li>UnlimiterRequired</li><li>RouteName</li><li>LengthName</li><li>DifficultyName</li><li>Laps</li><li>ReplayWRID</li><li>ReplayWRTime</li><li>ReplayWRUserID</li><li>ReplayWRUsername</li><li>TrackValue</li><li>Comments</li><li>MappackID</li><li>Unlisted</li><li>Unreleased</li><li>Downloadable</li><li>RatingVoteCount</li><li>RatingVoteAverage</li><li>HasScreenshot</li><li>HasThumbnail</li><li>HasGhostBlocks</li><li>EmbeddedObjectsCount</li><li>EmbeddedItemsSize</li><li>IsMP4</li><li>SizeWarning</li><li>AwardCount</li><li>CommentCount</li><li>ReplayCount</li><li>ImageCount</li><li>VideoCount</li>
               </ul>
             </details>
+          </details>
+
+          <details open>
+            <summary>Chat Bots</summary>
+            <h2>Nightbot</h2>
+            <p></p>
+            <pre className='bg-gray-100 rounded p-1'><code>!commands add !map $(urlfetch https://tm.snekw.com/api/map/view/ew3pDGcne3EUc2h3civN2z/eUwwEtejsrL2QnFjt872K9 )</code></pre>
           </details>
         </details>
       </main>
