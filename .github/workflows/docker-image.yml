@@ -3,16 +3,25 @@ name: Docker Image CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
 
-  build:
+  docker:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push Docker images
+        # You may pin to the exact commit or the version.
+        # uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
+        uses: docker/build-push-action@v2.10.0
+        with:
+          push: true
+          tags: snekw/snwtm:latest
