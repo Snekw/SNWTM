@@ -12,7 +12,7 @@ export function setSession(res: OutgoingMessage, cookies: Record<string, string>
     res.removeHeader('Set-Cookie')
     res.setHeader('Set-Cookie', serialize('session', JSON.stringify(cookies), {
         encode: (val: string) => Buffer.from(val).toString('base64'),
-        maxAge: 60 * 60 * 90,
+        maxAge: 60 * 60 * 24 * 90,
         path: '/map'
     }))
     return
