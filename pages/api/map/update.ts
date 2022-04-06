@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method !== 'POST') {
-    return
+    return res.status(400).end()
   }
   console.log(req.body, req.headers.authorization)
   const auth = req.headers.authorization
@@ -54,5 +54,5 @@ export default async function handler(
 
   await user.save()
 
-  res.status(200).end(req.body.mapUid)
+  return res.status(200).end(req.body.mapUid)
 }
