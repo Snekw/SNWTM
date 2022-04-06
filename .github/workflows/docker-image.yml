@@ -25,3 +25,23 @@ jobs:
         with:
           push: true
           tags: snekw/snwtm:latest
+  deployment:
+    runs-on: ubuntu-latest
+    needs: docker
+    environment:
+      name: 'Production'
+      url: 'https://tm.snekw.com/'
+    concurrency: production
+    
+    steps:
+      -
+        name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            ~/update.sh
+          
