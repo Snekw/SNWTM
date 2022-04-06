@@ -10,8 +10,7 @@ import { splitAtom, useHydrateAtoms } from "jotai/utils";
 import { textParse } from '../../lib/textParser'
 import { useRouter } from 'next/router'
 import { generate as shortUUID } from "short-uuid";
-
-const textTemplate = `Map: "{mapName}" by {mapAuthor} AT: {mapAuthorTime}`
+import { DEFAULT_TEXT_TEMPLATE } from '../../lib/constants'
 
 export const getServerSideProps = async (context: NextPageContext) => {
   const data = parseCookies(context.req)
@@ -19,7 +18,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
   if (context.res) {
     if (!data || Object.keys(data).length === 0 || data.token === undefined) {
       const user = await UserModel.create({
-        texts: [Buffer.from(JSON.stringify({ text: textTemplate, id: shortUUID().toString() })).toString('base64')]
+        texts: [Buffer.from(JSON.stringify({ text: DEFAULT_TEXT_TEMPLATE, id: shortUUID().toString() })).toString('base64')]
       })
       setSession(context.res, {
         token: user.token
@@ -185,6 +184,17 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
     router.reload()
   }
 
+  const createNewToken = async () => {
+    const res = await fetch(`/api/map/token/new`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`
+      }
+    })
+    router.reload()
+  }
+
   return (
     <div className='flex h-full flex-col'>
       <Head>
@@ -224,7 +234,10 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
           <button onClick={restoreToken} className='bg-gray-100 rounded border w-fit'>Restore Token</button>
         </div>
         <p>Keep the Token private.</p>
-        <details><summary>Token</summary><code>{props.token}</code></details>
+        <details><summary>Token</summary>
+          <pre><code>{props.token}</code></pre>
+          <button onClick={createNewToken} className='bg-gray-100 rounded border w-fit'>Get New Token</button>
+        </details>
         <p>
           View Token is considered not private and is visible on url.
         </p>

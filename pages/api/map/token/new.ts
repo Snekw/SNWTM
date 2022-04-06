@@ -1,7 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { UserModel } from '../../../db/models/user'
-import { setSession } from '../../../lib/cookie'
+import { generate as shortUUID } from "short-uuid";
+import { UserModel } from '../../../../db/models/user'
+import { DEFAULT_TEXT_TEMPLATE } from '../../../../lib/constants'
+import { setSession } from '../../../../lib/cookie'
 
 type Data = {
     name: string
@@ -14,21 +16,16 @@ export default async function handler(
     if (req.method !== 'POST') {
         return
     }
-    const body = req.body
-
-    if (!req.body || !req.body.token) {
-        return res.status(400).end()
-    }
-
-    const user = await UserModel.findOne({ token: body.token })
+    const user = await UserModel.create({
+        texts: [Buffer.from(JSON.stringify({ text: DEFAULT_TEXT_TEMPLATE, id: shortUUID().toString() })).toString('base64')]
+    })
 
     if (!user) {
         return res.status(400).end()
     }
 
     setSession(res, {
-        token: body.token
+        token: user.token
     })
-
     res.status(200).end()
 }
