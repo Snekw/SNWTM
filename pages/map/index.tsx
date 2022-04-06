@@ -277,6 +277,7 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
               <li>mapGoldTime</li>
               <li>mapSilvertime</li>
               <li>mapBronzeTime</li>
+              <li>tmxLink</li>
             </ul>
             <details>
               <summary>TMX options</summary>
