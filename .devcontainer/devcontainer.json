@@ -5,7 +5,7 @@
   "name": "Node.js & Mongo DB",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/snwtm",
 
   // Set *default* container specific settings.json values on container create.
   "settings": {},
