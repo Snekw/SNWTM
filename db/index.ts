@@ -14,7 +14,7 @@ async function dbConnect() {
     /* connecting to our database */
     const con = process.env.MONGO_STR
     if (!con) {
-        throw new Error('Missing connection string for mongo.')
+        throw new Error('Missing connection string for mongo. Use MONGO_STR environment variable to provide it.')
     }
     const db = await mongoose.connect(con, {
         useNewUrlParser: true,
