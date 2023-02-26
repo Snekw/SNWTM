@@ -19,3 +19,18 @@ Nightbot supports `urlfetch` command that can be used to fetch the latest map in
 `!commands add !map $(urlfetch https://tm.snekw.com/api/map/view/******/***** )`
 
 Substitute the url with the url provided on https://tm.snekw.com/map for the text you want to reply.
+
+## Hosting
+
+Docker image is provided through Docker Hub https://hub.docker.com/r/snekw/snwtm.
+
+Requires a MongDB database to be available.
+
+### Environment variables
+
+Few environment variables are required.
+
+| Variable | Expected value | Purpose |
+|----------|----------------|---------|
+| MONGO_STR| Mongo DB connection string | Provides database connection information. |
+| SNW_TM_HOST | URL | Provides the application the user facing URL of the page to provide full links. |
