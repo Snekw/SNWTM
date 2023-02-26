@@ -5,7 +5,7 @@ import { Footer } from '../components/footer'
 
 const Home: NextPage = () => {
   return (
-    <div className='flex h-full flex-col'>
+    <div className='flex h-full w-full flex-col background-image'>
       <Head>
         <title>TM Tools</title>
         <meta name="description" content="Snekw's TM tools" />
@@ -18,10 +18,13 @@ const Home: NextPage = () => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
 
-      <main className="flex w-screen content">
-        <ul>
-          <li><a href={'/map'}>TM Game State</a></li>
-        </ul>
+      <main className="flex w-screen content justify-center">
+        <div className='self-center'>
+          <ul>
+            <li><button className='button'><a href={'/map'}>TM Game State</a></button></li>
+          </ul>
+
+        </div>
       </main>
 
       <Footer />

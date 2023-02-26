@@ -25,3 +25,21 @@ body {
     @apply h-full;
   }
 }
+
+.background-image {
+  background: url('/tm_bg.jpg');
+  background-size: cover;
+}
+
+.button {
+  background: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  transition: 0.5s;
+}
+
+.button:hover {
+  border-radius: 7px;
+  padding: 20px;
+  background: #aaa;
+}
