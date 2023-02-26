@@ -79,7 +79,7 @@ const Text = (props: {
   text: PrimitiveAtom<Text>
   host: string
 }) => {
-  const [text, setText] = useAtom<Text, Text, void>(props.text)
+  const [text, setText] = useAtom(props.text)
   const [mapInfo] = useAtom(mapInfoAtom)
   const [preview, setPreview] = useState(textParse(text.text, mapInfo))
   const [token] = useAtom(tokenAtom)
@@ -118,7 +118,7 @@ const Text = (props: {
       })
     })
 
-    removeTextAtom(props.text)
+    removeTextAtom({ type: 'remove', atom: props.text })
   }
 
   return (
@@ -246,18 +246,17 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
         </p>
         <details><summary>View Token</summary> <code>{props.viewToken}</code></details>
         <br />
-        <p>Endpoint: {props.host}/api/map/update</p>
         <details open>
           <summary>Latest Map Info</summary>
-          {mapInfo ? (
+          {mapInfo ?
             <ul>
-              <li>Map: {mapInfo.mapName}</li>
-              <li>Author: {mapInfo.mapAuthor}</li>
-              <li>MapUid: {mapInfo.mapUid}</li>
+              <li><>Map: {mapInfo.mapName}</></li>
+              <li><>Author: {mapInfo.mapAuthor}</></li>
+              <li><>MapUid: {mapInfo.mapUid}</></li>
             </ul>
-          ) : (
+            :
             <p>No map info submitted yet</p>
-          )}
+          }
 
         </details>
         <br />
@@ -299,6 +298,11 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
             <p></p>
             <pre className='bg-gray-100 rounded p-1'><code>!commands add !map $(urlfetch https://tm.snekw.com/api/map/view/ew3pDGcne3EUc2h3civN2z/eUwwEtejsrL2QnFjt872K9 )</code></pre>
           </details>
+        </details>
+
+        <details>
+          <summary>Advanced</summary>
+          <p>Endpoint: {props.host}/api/map/update</p>
         </details>
       </main>
       <Footer />
