@@ -12,13 +12,25 @@ Multiple different texts can be defined by pressing "New" button. Remember to sa
 
 The `token` should be kept private as it is used to authenticate changes to the backend.
 
-### Nightbot
+### ChatBots
 
-Nightbot supports `urlfetch` command that can be used to fetch the latest map info.
+Most chat bots support some sort of fetching of data from URL. This method is used to output the chat command output.
 
-`!commands add !map $(urlfetch https://tm.snekw.com/api/map/view/******/***** )`
-
-Substitute the url with the url provided on https://tm.snekw.com/map for the text you want to reply.
+* Nightbot:
+    * `!commands add !map $(urlfetch https://tm.snekw.com/api/map/view/****/**** )`
+        * Replace the url with the url found on tm.snekw.com/map under "Texts" section.
+* StreamElements:
+    * `!command add map ${urlfetch https://tm.snekw.com/api/map/view/****/****}`
+        * Replace the url with the url found on tm.snekw.com/map under "Texts" section.
+* Moobot:
+    * Create a new custom command
+        * Select "Response" as "URL fetch - Full (plain) response"
+        * Paste the url to "URL to fetch"
+        * Leave all other URL fetch parameters as default
+* Other bots:
+    * Most bots have some form of custom API support
+        * Most commonly it's named `URL-fetch`, `customapi` or `readapi`
+        * Follow the instructions for your own bots version of this and it should work
 
 ## Hosting
 
