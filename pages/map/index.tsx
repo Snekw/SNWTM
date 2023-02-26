@@ -295,8 +295,29 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
           <details open>
             <summary>Chat Bots</summary>
             <h2>Nightbot</h2>
-            <p></p>
-            <pre className='bg-gray-100 rounded p-1'><code>!commands add !map $(urlfetch https://tm.snekw.com/api/map/view/ew3pDGcne3EUc2h3civN2z/eUwwEtejsrL2QnFjt872K9 )</code></pre>
+            <p><pre className='bg-gray-100 rounded p-1'><code>!commands add !map $(urlfetch https://tm.snekw.com/api/map/view/ew3pDGcne3EUc2h3civN2z/eUwwEtejsrL2QnFjt872K9 )</code></pre></p>
+            <br />
+            <h2>StreamElements</h2>
+            <p><pre className='bg-gray-100 rounded p-1'><code>!command add map {"${urlfetch https://tm.snekw.com/api/map/view/****/****}"}</code></pre></p>
+            <br />
+            <h2>Moobot</h2>
+            <p>
+              <ul>
+                <li>Create a new custom command</li>
+                <li>{`Select "Response" as "URL fetch - Full (plain) response"`}</li>
+                <li>{`Paste the url to "URL to fetch"`}</li>
+                <li>{`Leave all other URL fetch parameters as default`}</li>
+              </ul>
+            </p>
+            <br />
+            <h2>Other bots</h2>
+            <p>
+              <ul>
+                <li>Most bots have some form of custom API support</li>
+                <li>{`Most commonly it's named \`URL-fetch\`, \`customapi\` or \`readapi\``}</li>
+                <li>{`Follow the instructions for your own bots version of this and it should work`}</li>
+              </ul>
+            </p>
           </details>
         </details>
 
@@ -304,7 +325,7 @@ const StateIndex: NextPage<StateIndexProps> = (props) => {
           <summary>Advanced</summary>
           <p>Endpoint: {props.host}/api/map/update</p>
         </details>
-      </main>
+      </main >
       <Footer />
     </div >
   )
