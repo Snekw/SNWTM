@@ -24,9 +24,12 @@ export const getServerSideProps = async (context: NextPageContext) => {
         token: user.token
       })
       return {
-        redirect: {
-          permanent: false,
-          destination: `/map`
+        props: {
+          viewToken: user.viewToken,
+          token: user.token,
+          map: user.map || null,
+          texts: user.texts.map((text: string) => JSON.parse(Buffer.from(text, 'base64').toString())),
+          host: process.env.SNW_TM_HOST
         }
       }
     }
